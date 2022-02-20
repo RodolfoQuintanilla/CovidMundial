@@ -3,12 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import VistaGeneral from "./components/VistaGeneral";
 import Nav from './components/Nav'
 import Test from "./components/Test";
+import CategoriasProvider from './context/CategoriasContex'
 
 
 
 function App() {
+
+
+
+
   return (
-    <div >
+    <CategoriasProvider>
       <Nav />
       <Routes>
         <Route index element={<VistaGeneral />} />
@@ -16,7 +21,7 @@ function App() {
       </Routes>
       <Layaout />
 
-    </div>
+    </CategoriasProvider>
   );
 }
 

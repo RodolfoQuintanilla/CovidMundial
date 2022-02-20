@@ -1,8 +1,13 @@
-
+import styles from '../styles/Nav.module.css'
 
 const Nav = () => {
     return (
-        <h1>Nav</h1>
+        <div className={styles.navegacion}>
+            <h3 className={styles.titulo}>Covid APP</h3>
+            <select className={styles.buscador} >
+                <option value="">Elije Tu pais</option>
+            </select>
+        </div >
     );
 };
 

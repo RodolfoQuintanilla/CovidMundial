@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+
 import total from '../styles/TableroTotales.module.css'
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,11 @@ import contagio from '../img/contagio.png';
 
 import useOperaciones from '../hook/useOperaciones'
 
+import { formatearFecha } from '../helper/fecha'
+
 const VistaGeneral = () => {
+
+
 
     const { sumaMT, sumaMuertesTotal, muerteDia, diaDeth,
         confirmadoTolales, confirmadosNuevos, sumaMuertes, totalConfirmado } = useOperaciones()
@@ -29,7 +33,7 @@ const VistaGeneral = () => {
 
                 <div className={total.fecha}>
                     <label>Fecha:</label>
-                    <input type="text" disabled />
+                    <input type="text" disabled value={formatearFecha(new Date())} />
                 </div>
                 <div className={total.contenidoCajas}>
 
@@ -38,7 +42,7 @@ const VistaGeneral = () => {
 
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Contagio Total</h1>
-                            <p> {totalConfirmado} </p>
+                            <p> {totalConfirmado.toLocaleString("es-ES")} </p>
                         </div>
                     </div>
                     <div className={total.caja}>
@@ -47,7 +51,7 @@ const VistaGeneral = () => {
 
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Nuevos Casos</h1>
-                            <p>{confirmadosNuevos}</p>
+                            <p>{confirmadosNuevos.toLocaleString("es-ES")}</p>
                         </div>
 
                     </div>
@@ -57,7 +61,7 @@ const VistaGeneral = () => {
 
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Muertes Total</h1>
-                            <p>{sumaMuertesTotal}</p>
+                            <p>{sumaMuertesTotal.toLocaleString("es-ES")}</p>
                         </div>
                     </div>
 
@@ -65,7 +69,7 @@ const VistaGeneral = () => {
                         <img className={total.icono} src={muerte} alt='muerte' />
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Nuevas Muertes</h1>
-                            <p>{diaDeth}</p>
+                            <p>{diaDeth.toLocaleString("es-ES")}</p>
                         </div>
                     </div>
 

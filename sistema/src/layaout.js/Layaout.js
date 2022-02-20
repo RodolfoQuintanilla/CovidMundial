@@ -5,7 +5,7 @@ import { CategoriasContex } from '../context/CategoriasContex'
 const Layaout = () => {
     const { datosApi } = useContext(CategoriasContex);
 
-    console.log(datosApi);
+    // console.log(datosApi);
     return (
         <>
             <Outlet />

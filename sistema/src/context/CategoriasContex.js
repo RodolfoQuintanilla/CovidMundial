@@ -6,8 +6,6 @@ export const CategoriasContex = createContext();
 //provide
 const CategoriasProvider = (props) => {
 
-    // const [hola, setHola] = useState('Hola Perro');
-
     const [datosApi, setDatosApi] = useState([]);
     useEffect(() => {
         const respuesta = async () => {
@@ -17,8 +15,6 @@ const CategoriasProvider = (props) => {
         };
         respuesta()
     }, [])
-
-
 
     return (
         <CategoriasContex.Provider

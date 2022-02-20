@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import total from '../styles/TableroTotales.module.css'
 import { Link } from "react-router-dom";
 
@@ -7,11 +7,24 @@ import muerte from '../img/muerte.png';
 import fiebre from '../img/fiebre.png';
 import contagio from '../img/contagio.png';
 
-
+import useOperaciones from '../hook/useOperaciones'
 
 const VistaGeneral = () => {
+
+    const { sumaMT, sumaMuertesTotal, muerteDia, diaDeth,
+        confirmadoTolales, confirmadosNuevos, sumaMuertes, totalConfirmado } = useOperaciones()
+
+    setTimeout(() => {
+        sumaMT()
+        muerteDia()
+        confirmadoTolales()
+        sumaMuertes()
+    }, 500);
+
+
     return (
         <>
+
             <div className={total.contenedor}>
 
                 <div className={total.fecha}>
@@ -25,7 +38,7 @@ const VistaGeneral = () => {
 
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Contagio Total</h1>
-                            <p>100</p>
+                            <p> {totalConfirmado} </p>
                         </div>
                     </div>
                     <div className={total.caja}>
@@ -34,7 +47,7 @@ const VistaGeneral = () => {
 
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Nuevos Casos</h1>
-                            <p>100</p>
+                            <p>{confirmadosNuevos}</p>
                         </div>
 
                     </div>
@@ -44,7 +57,7 @@ const VistaGeneral = () => {
 
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Muertes Total</h1>
-                            <p>100</p>
+                            <p>{sumaMuertesTotal}</p>
                         </div>
                     </div>
 
@@ -52,7 +65,7 @@ const VistaGeneral = () => {
                         <img className={total.icono} src={muerte} alt='muerte' />
                         <div className={total.contenedorTexto}>
                             <h1 className={total}>Nuevas Muertes</h1>
-                            <p>100</p>
+                            <p>{diaDeth}</p>
                         </div>
                     </div>
 

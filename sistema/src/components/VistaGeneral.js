@@ -1,6 +1,6 @@
 
 import total from '../styles/TableroTotales.module.css'
-import { Link } from "react-router-dom";
+
 
 import graficos from '../img/graficos.png';
 import muerte from '../img/muerte.png';
@@ -16,13 +16,13 @@ const VistaGeneral = () => {
 
 
     const { sumaMT, sumaMuertesTotal, muerteDia, diaDeth,
-        confirmadoTolales, confirmadosNuevos, sumaMuertes, totalConfirmado } = useOperaciones()
+        confirmadoTolalesDia, confirmadosNuevos, sumaMuertes: sumaComtagio, totalConfirmado } = useOperaciones()
 
     setTimeout(() => {
         sumaMT()
         muerteDia()
-        confirmadoTolales()
-        sumaMuertes()
+        confirmadoTolalesDia()
+        sumaComtagio()
     }, 500);
 
 
@@ -74,10 +74,7 @@ const VistaGeneral = () => {
                     </div>
 
                 </div>
-                <div className={total.btn}>
 
-                    <Link to='/Test'>Realiza tu Test</Link>
-                </div>
 
             </div>
         </>

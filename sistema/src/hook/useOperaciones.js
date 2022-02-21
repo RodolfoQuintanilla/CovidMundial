@@ -10,10 +10,12 @@ const useOperaciones = () => {
     const [confirmadosNuevos, setConfirmadosNuevos] = useState(0);
     const [totalConfirmado, setTotalConfirmado] = useState(0);
 
+
     let muerteSuma = []
     let newDeaths = [];
     let totalConfirmed = [];
     let arreglo = [];
+    let newConfirmed = [];
 
     const sumaMT = () => {
         datosApi.map(res => {
@@ -31,25 +33,39 @@ const useOperaciones = () => {
         setdiaDeth(total);
     };
 
-    const confirmadoTolales = () => {
-        datosApi.map(res => {
-            totalConfirmed.push(res.NewConfirmed)
-        })
-        let total = totalConfirmed.reduce((a, b) => a + b, 0);
-        setConfirmadosNuevos(total);
-    };
 
-    const sumaMuertes = () => {
+    const sumaContagio = () => {
         datosApi.map(res => {
-            arreglo.push(res.TotalDeaths)
+            arreglo.push(res.TotalConfirmed)
         })
         let total = arreglo.reduce((a, b) => a + b, 0);
         setTotalConfirmado(total);
     };
 
+    const confirmadoTolalesDia = () => {
+        datosApi.map(res => {
+            newConfirmed.push(res.NewConfirmed)
+        })
+        let total = newConfirmed.reduce((a, b) => a + b, 0);
+        setConfirmadosNuevos(total);
+    };
+
+    /*   const confirmadoTolales = () => {
+          datosApi.map(res => {
+              totalConfirmed.push(res.TotalConfirmed)
+          })
+          let total = totalConfirmed.reduce((a, b) => a + b, 0);
+          setConfirmadosNuevos(total);
+      }; */
 
 
-    return { sumaMuertesTotal, sumaMT, muerteDia, diaDeth, confirmadoTolales, confirmadosNuevos, sumaMuertes, totalConfirmado }
+
+
+
+    return {
+        sumaMuertesTotal, sumaMT, muerteDia, diaDeth, confirmadoTolalesDia,
+        confirmadosNuevos, sumaMuertes: sumaContagio, totalConfirmado
+    }
 
 };
 
